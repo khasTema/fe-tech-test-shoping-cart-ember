@@ -1,0 +1,14 @@
+<div class="my-4 mx-auto p-5 border border-cyan-950 rounded-lg">
+  <p class="my-2">
+    <span>Product name: {{@product.name}}</span>
+    <span>Product price: {{@product.price}}</span>
+  </p>
+  <p class="my-2">In Cart: {{this.quantity}}</p>
+  <button
+    type="button"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    {{on "click" this.addToCart}}
+  >
+    Add to cart
+  </button>
+</div>

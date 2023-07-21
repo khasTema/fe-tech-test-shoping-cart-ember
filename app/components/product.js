@@ -6,9 +6,62 @@ export default class ProductComponent extends Component {
   @tracked quantity = 0;
 
   get totalPrice() {
-    return !this.quantity
-      ? this.args.product.price.toFixed(2)
-      : (this.quantity * this.args.product.price).toFixed(2);
+    const { product } = this.args;
+    if (!this.quantity) {
+      return product.price.toFixed(2);
+    } else {
+      let totalPrice;
+      switch (product.code) {
+        case 'GR1':
+          totalPrice = (Math.ceil(this.quantity / 2) * product.price).toFixed(2);
+          break;
+        case 'SR1':
+          if (this.quantity >= 3) {
+            totalPrice = (this.quantity * 4.5).toFixed(2);
+          } else {
+            totalPrice = (this.quantity * product.price).toFixed(2);
+          }
+          break;
+        case 'CF1':
+          if (this.quantity >= 3) {
+            totalPrice = ((2 / 3) * this.quantity * product.price).toFixed(2);
+          } else {
+            totalPrice = (this.quantity * product.price).toFixed(2);
+          }
+          break;
+        default:
+          totalPrice = (this.quantity * product.price).toFixed(2);
+      }
+      return totalPrice;
+    }
+  }
+
+  get discountDescription() {
+    const { product } = this.args;
+    switch (product.code) {
+      case 'GR1':
+        return 'Buy one get one free';
+      case 'SR1':
+        return '3 for £13.50';
+      case 'CF1':
+        return 'Multi-buy';
+      default:
+        return '';
+    }
+  }
+
+  get productImage() {
+    const { product } = this.args;
+    switch (product.code) {
+      case 'GR1':
+        return 'images/gr1.png';
+      case 'SR1':
+        return 'images/sr1.png';
+      case 'CF1':
+        return 'images/cf1.png';
+      default:
+        return '';
+    }
   }
 
   @action

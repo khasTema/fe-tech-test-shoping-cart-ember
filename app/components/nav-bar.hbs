@@ -1,15 +1,10 @@
-<nav class="bg-gray-500">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-    <div class="relative flex h-16 items-center justify-between">
-      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="hidden sm:ml-6 sm:block">
-          <div class="flex space-x-4">
-            <LinkTo @route="index" class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Home</LinkTo>
-            <LinkTo @route="products" class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Products</LinkTo>
-            <LinkTo @route="checkout" class="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Cart</LinkTo>
-          </div>
-        </div>
-      </div>
-    </div>
+<nav class="bg-white py-3 border-b border-gray-200">
+  <div class="mx-auto w-11/12 flex justify-between items-center">
+            <LinkTo @route="products" >
+              <img src="/icons/logo.png" alt="products">
+            </LinkTo>
+            <LinkTo @route="checkout" >
+              <img src="/icons/empty-cart.png" alt="cart">
+            </LinkTo>
   </div>
 </nav>

@@ -40,11 +40,11 @@ export default class ProductComponent extends Component {
     const { product } = this.args;
     switch (product.code) {
       case 'GR1':
-        return 'Buy one get one free';
+        return '2 for 1';
       case 'SR1':
         return '3 for £13.50';
       case 'CF1':
-        return 'Multi-buy';
+        return 'Multi-buy Discount';
       default:
         return '';
     }

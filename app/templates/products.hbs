@@ -1,4 +1,6 @@
 {{page-title "Products"}}
-{{#each this.model as |product|}}
-<Product @product={{product}} />
-{{/each}}
+<div class="flex justify-between flex-wrap my-10">
+    {{#each this.model as |product|}}
+    <Product @product={{product}} />
+    {{/each}}
+</div>

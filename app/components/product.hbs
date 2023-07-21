@@ -1,5 +1,7 @@
 <div class="max-w-xs my-4 mx-auto rounded-lg relative overflow-hidden">
-  <div class="absolute bg-teal-100 p-2 rounded-lg top-2 right-2 text-xs">{{this.discountDescription}}</div>
+  <div class="absolute top-2 right-2">
+    <PromoBadge @discountDescription={{this.discountDescription}} />
+  </div>
   <img src={{this.productImage}} alt={{@product.name}} class="w-full">
   <div class="flex border border-gray-100 py-8 px-4 -translate-y-2 border-t-0">
     <div class="w-2/4">
@@ -7,46 +9,13 @@
       <p class="text-base leading-6 font-normal block text-gray-800">£{{this.totalPrice}}</p>
     </div>
     <div class="flex justify-end items-end w-2/4">
-      {{#if this.quantity}}
-        <div class="bg-violet-50 text-violet-500 font-bold rounded flex justify-between items-center">
-          {{#if this.isconIsShown}}
-            <button
-              class="px-3 rounded"
-              type="button"
-              {{on "click" this.deleteFromCart}}
-            >
-              <span>
-                <img src="/icons/trash.png" alt="-">
-              </span>
-            </button>
-          {{else}}
-             <button
-                class="hover:bg-violet-500 hover:text-white px-3 rounded"
-                type="button"
-                {{on "click" this.deleteFromCart}}
-              >
-                <span>-</span>
-            </button>
-          {{/if}}
-          <span class="my-2 px-1">{{this.quantity}}</span>
-          <button
-            class="hover:bg-violet-500 hover:text-white px-3 rounded"
-            type="button"
-            {{on "click" this.addToCart}}
-          >
-            <span>+</span>
-          </button>
-        </div>
-      {{else}}
-        <button
-          type="button"
-          class="bg-violet-50 hover:bg-violet-500 hover:text-white text-violet-500 font-bold p-2 rounded"
-          {{on "click" this.addToCart}}
-        >
-          Add to cart
-        </button>
-      {{/if}}
+        <AddBtn
+          @quantity={{this.quantity}}
+          @deleteFromCart={{this.deleteFromCart}}
+          @addToCart={{this.addToCart}}
+          @isconIsShown={{this.isconIsShown}}
+        />
     </div>
   </div>
-  
+  <span>{{this.quantity}}</span>
 </div>

@@ -12,11 +12,13 @@
     Add to cart
   </button>
   <span class="my-2">In Cart: {{this.quantity}}</span>
-  <button
-    type="button"
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    {{on "click" this.deleteFromCart}}
-  >
-    delete form cart
-  </button>
+  {{#if this.quantity}}
+    <button
+      type="button"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      {{on "click" this.deleteFromCart}}
+    >
+      delete form cart
+    </button>
+  {{/if}}
 </div>

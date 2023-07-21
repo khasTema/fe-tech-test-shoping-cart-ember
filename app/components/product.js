@@ -4,7 +4,6 @@ import { action } from '@ember/object';
 
 export default class ProductComponent extends Component {
   @tracked quantity = 0;
-
   get totalPrice() {
     const { product } = this.args;
     if (!this.quantity) {
@@ -62,6 +61,10 @@ export default class ProductComponent extends Component {
       default:
         return '';
     }
+  }
+
+  get isconIsShown() {
+    return this.quantity < 2;
   }
 
   @action

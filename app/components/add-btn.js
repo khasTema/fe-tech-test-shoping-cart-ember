@@ -10,10 +10,9 @@ export default class AddBtnComponent extends Component {
   @action
   addToCart() {
     this.args.addToCart();
-    console.log(this.args.quantity);
   }
 
-  // get isTrashIconShown() {
-  //   return this.args.quantity < 2;
-  // }
+  get isTrashIconShown() {
+    return this.args.quantity < 2;
+  }
 }

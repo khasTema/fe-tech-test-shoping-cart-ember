@@ -77,6 +77,7 @@ export default class ProductComponent extends Component {
     this.quantity++;
     const { product } = this.args;
     let cartProduct = {
+      id: product.id,
       name: product.name,
       price: product.price,
       code: product.code,
@@ -90,5 +91,7 @@ export default class ProductComponent extends Component {
   @action
   deleteFromCart() {
     this.quantity--;
+    const { product } = this.args;
+    this.cart.remove(product.id); // sent to shopping-cart service
   }
 }

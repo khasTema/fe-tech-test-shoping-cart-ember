@@ -5,7 +5,7 @@ export default class NavBarComponent extends Component {
   @service('shopping-cart') cart;
 
   get isCartFiled() {
-    return true;
+    return this.cart.totalQuantity > 0;
   }
 
   get ProductsQuantity() {
@@ -13,6 +13,6 @@ export default class NavBarComponent extends Component {
   }
 
   get ProductsTotalPrice() {
-    return this.cart.totalCartPrice;
+    return this.cart.totalCartPrice.toFixed(2);
   }
 }

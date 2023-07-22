@@ -1,12 +1,13 @@
 {{page-title "Products"}}
+<Container>
+    <Jumbo>
+        <Heading>Groceries</Heading>
+        <SubHeading>Special FX offers only the finest organic produce.</SubHeading>
+    </Jumbo>
 
-<Jumbo>
-    <Heading>Groceries</Heading>
-    <SubHeading>Special FX offers only the finest organic produce.</SubHeading>
-</Jumbo>
-
-<div class="flex justify-between flex-wrap my-10">
-    {{#each this.model as |product|}}
-    <Product @product={{product}} />
-    {{/each}}
-</div>
+    <div class="flex justify-between flex-wrap my-10">
+        {{#each this.model as |product|}}
+        <Product @product={{product}} />
+        {{/each}}
+    </div>
+</Container>

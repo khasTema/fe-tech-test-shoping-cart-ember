@@ -25,7 +25,6 @@ export default class ShoppingCartService extends Service {
       };
       this.cartItems.pushObject(newItem); // Push the new item into the cartItems array
     }
-    console.log(this.cartItems);
   }
 
   remove(id) {

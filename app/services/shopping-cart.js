@@ -5,29 +5,13 @@ import { tracked } from '@glimmer/tracking';
 export default class ShoppingCartService extends Service {
   @tracked cartItems = A([]);
 
-  // add(item) {
-  //   const existingItem = this.cartItems.findBy('id', item.id);
-  //   if (existingItem) {
-  //     const newItem = {
-  //       ...existingItem,
-  //       quantity: existingItem.quantity + 1,
-  //       discountedTotalPrice: this.totalPrice(item),
-  //     };
-  //     this.cartItems.removeObject(existingItem);
-  //     this.cartItems.pushObject(newItem);
-  //   } else {
-  //     this.cartItems.pushObject(item); // Push the new item into the cartItems array
-  //   }
-  //   console.log(this.cartItems);
-  // }
-
   add(item) {
     const existingItem = this.cartItems.findBy('id', item.id);
     if (existingItem) {
       const newItem = {
         ...existingItem,
         quantity: existingItem.quantity + 1,
-        discountedTotalPrice: this.totalPrice({
+        discountedTotalPrice: this.totalItemDiscountedPrice({
           ...existingItem,
           quantity: existingItem.quantity + 1,
         }),
@@ -37,7 +21,7 @@ export default class ShoppingCartService extends Service {
     } else {
       const newItem = {
         ...item,
-        discountedTotalPrice: this.totalPrice(item),
+        discountedTotalPrice: this.totalItemDiscountedPrice(item),
       };
       this.cartItems.pushObject(newItem); // Push the new item into the cartItems array
     }
@@ -47,14 +31,13 @@ export default class ShoppingCartService extends Service {
   remove(id) {
     // gets id from product card
     const existingItem = this.cartItems.findBy('id', id);
-
     if (existingItem) {
       if (existingItem.quantity > 1) {
         // If the quantity is greater than 1, create a new item with decremented quantity
         const newItem = {
           ...existingItem,
           quantity: existingItem.quantity - 1,
-          discountedTotalPrice: this.totalPrice({
+          discountedTotalPrice: this.totalItemDiscountedPrice({
             ...existingItem,
             quantity: existingItem.quantity - 1,
           }),
@@ -68,12 +51,23 @@ export default class ShoppingCartService extends Service {
     }
   }
 
+  // whole amount of items in the cart
   get totalQuantity() {
     let quantity = 0;
     this.cartItems.forEach((item) => (quantity += item.quantity));
     return quantity;
   }
 
+  // whole ammount without discounts
+  get totalNoDiscountCartPrice() {
+    let noDiscountPrice = 0;
+    this.cartItems.forEach((item) => {
+      noDiscountPrice += item.quantity * item.price;
+    });
+    return noDiscountPrice;
+  }
+
+  // whole amount with discounts applied
   get totalCartPrice() {
     let priceAmmount = 0;
     this.cartItems.forEach(
@@ -82,11 +76,9 @@ export default class ShoppingCartService extends Service {
     return priceAmmount;
   }
 
-  totalPrice(item) {
-    // const { product } = this.args;
+  totalItemDiscountedPrice(item) {
     if (!item.quantity) {
-      // return parseFloat(item.price.toFixed(2));
-      return 'here it works';
+      return parseFloat(item.price.toFixed(2));
     } else {
       let totalPrice;
       switch (item.code) {

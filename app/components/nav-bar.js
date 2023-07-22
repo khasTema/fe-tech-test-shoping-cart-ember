@@ -13,6 +13,6 @@ export default class NavBarComponent extends Component {
   }
 
   get ProductsTotalPrice() {
-    return this.cart.totalCartPrice;
+    return this.cart.totalCartPrice.toFixed(2);
   }
 }

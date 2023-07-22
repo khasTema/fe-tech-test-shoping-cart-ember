@@ -12,7 +12,6 @@ export default class ShoppingCartService extends Service {
       this.items.removeAt(index);
     }
     this.items.pushObject(item); // Push the new item into the items array
-    console.log(this.items);
   }
 
   remove(id) {
@@ -33,7 +32,6 @@ export default class ShoppingCartService extends Service {
         this.items.removeObject(existingItem);
       }
     }
-    console.log(this.items);
   }
 
   get totalQuantity() {
@@ -44,7 +42,7 @@ export default class ShoppingCartService extends Service {
 
   get totalCartPrice() {
     let priceAmmount = 0;
-    this.items.forEach((item) => (priceAmmount += item.totalPrice));
+    this.items.forEach((item) => (priceAmmount += item.discountedTotalPrice));
     return priceAmmount;
   }
 }

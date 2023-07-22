@@ -82,7 +82,7 @@ export default class ProductComponent extends Component {
       price: product.price,
       code: product.code,
       quantity: this.quantity,
-      totalPrice: this.totalPrice,
+      discountedTotalPrice: this.totalPrice,
       promo: this.discountDescription,
       image: this.productImage,
     };

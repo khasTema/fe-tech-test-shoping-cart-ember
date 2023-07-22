@@ -21,8 +21,13 @@ export default class ShoppingCartService extends Service {
   
     if (existingItem) {
       if (existingItem.quantity > 1) {
-        // If the quantity is greater than 1, decrement it by 1
-        existingItem.quantity -= 1;
+        // If the quantity is greater than 1, create a new item with decremented quantity
+        const newItem = {
+          ...existingItem,
+          quantity: existingItem.quantity - 1,
+        };
+        this.items.removeObject(existingItem);
+        this.items.pushObject(newItem);
       } else {
         // If the quantity is 1, remove the item from the array
         this.items.removeObject(existingItem);

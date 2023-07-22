@@ -10,28 +10,29 @@ export default class AddBtnComponent extends Component {
   @action
   addToCart() {
     this.quantity++;
-    const { product } = this.args;
+    const { product, discountDescription, image } = this.args;
     let cartProduct = {
       id: product.id,
       name: product.name,
+      image: image,
       price: product.price,
       code: product.code,
+      promo: discountDescription,
       quantity: 1,
       // discountedTotalPrice: this.totalPrice,
-      // promo: this.discountDescription,
-      // image: this.productImage,
     };
     this.cart.add(cartProduct);
-    console.log(cartProduct);
-    console.log(this.cart.cartItems);
-    console.log(this.quantity);
+    // console.log(cartProduct);
+    // console.log(this.cart.cartItems);
+    // console.log(this.quantity);
   }
 
   @action
   deleteFromCart() {
     this.quantity--;
     this.cart.remove(this.args.product.id);
-    console.log(this.args.product.id);
+    // console.log(this.args.product.id);
+    // console.log(this.cart.cartItems);
   }
 
   get isTrashIconShown() {

@@ -1,0 +1,10 @@
+<main class="w-11/12 flex flex-wrap my-0 mx-auto justify-start">
+    <div class="name-products-list custom-min-width-320 w-7/12 flex flex-col justify-between items-center mr-8">
+        {{#each this.cart.cartItems as |item|}}
+            <CartProduct @product={{item}}/>
+        {{/each}}
+    </div>
+    <div class="name-checkout-list w-4/12 custom-min-width-365">
+        <CartCheckList />
+    </div>
+</main>

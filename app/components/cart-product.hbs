@@ -1,12 +1,12 @@
 <div class="name-cart-product w-full mb-4 border border-gray-100 rounded-lg p-3 flex justify-start items-start">
     <div class="w-1/4 mr-3">
-        <img src={{"/images/cf1.png"}} alt={{'product name'}}>
+        <img src={{@product.image}} alt={{@product.name}}>
     </div>
     <div class="h-full px-4 flex flex-col justify-between items-start">
-        <h2 class="text-xl leading-7 font-bold block text-gray-800 mb-2">{{"Product title"}}</h2>
-        <PromoBadge @discountDescription={{'some description'}}/>
+        <h2 class="text-xl leading-7 font-bold block text-gray-800 mb-2">{{@product.name}}</h2>
+        <PromoBadge @discountDescription={{@product.promo}}/>
         <AddBtn
-            @quantity={{this.quantity}}
+            @quantity={{@product.quantity}}
             @deleteFromCart={{this.deleteFromCart}}
             @addToCart={{this.addToCart}}
             @isconIsShown={{this.isconIsShown}}

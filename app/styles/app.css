@@ -14,3 +14,7 @@ body {
 .custom-min-width-320 {
   min-width: 320px;
 }
+
+.custom-arrow-list-btn-left {
+  left: -45px;
+}

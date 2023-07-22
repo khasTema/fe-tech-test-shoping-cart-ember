@@ -1,8 +1,11 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
 export default class CartCheckListComponent extends Component {
   @service('shopping-cart') cart;
+  @tracked showList = false;
 
   get reducedDiscountAmmount() {
     return (
@@ -21,5 +24,10 @@ export default class CartCheckListComponent extends Component {
   get shippingCost() {
     let distance = 0;
     return (this.cart.totalCartPrice * distance).toFixed(2);
+  }
+
+  @action
+  handleClick() {
+    return (this.showList = !this.showList);
   }
 }

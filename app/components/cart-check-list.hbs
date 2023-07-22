@@ -3,10 +3,27 @@
         <h2 class="text-xl text-gray-800 leading-7 font-bold block mb-2">Summary</h2>
     </div>
     <div class="name-totals p-6 w-full flex flex-col items-end border border-gray-50">
-        <div class="subtotal w-8/12 flex justify-between items-center mb-3">
+        <div class="subtotal w-8/12 flex justify-between items-center mb-3 relative">
             <span class="name text-gray-800">Subtotal</span>
             <span class="price text-gray-800">£{{this.subtotal}}</span>
+            <div class="absolute custom-arrow-list-btn-left cursor-pointer" {{on "click" this.handleClick}} title="Show discounted prices">
+                {{#if this.showList}}
+                    <img src="/icons/chevron-down.png" alt="arrow">
+                {{else}}
+                    <img src="/icons/chevron-right.png" alt="arrow">
+                {{/if}}
+            </div>
         </div>
+        {{#if this.showList}}
+            <div class="list-of-items w-8/12 mb-4">
+                {{#each this.cart.cartItems as |item|}}
+                    <div class="w-full p-2 flex justify-between">
+                        <span>{{item.quantity}} x {{item.name}}</span>
+                        <span>£{{item.discountedTotalPrice}}</span>
+                    </div>
+                {{/each}}
+            </div>
+        {{/if}}
         <div class="subtotal w-8/12 flex justify-between items-center mb-3">
             <span class="name text-gray-800">Shipping Cost</span>
             <span class="price text-gray-800">£{{this.shippingCost}}</span>

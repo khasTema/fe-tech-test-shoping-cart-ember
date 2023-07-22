@@ -7,8 +7,10 @@
               <LinkTo @route="checkout" >
                 <div class="flex justify-between items-center px-2 py-1 bg-violet-50 rounded text-violet-500">
                   <img src="/icons/shopping-cart.png" alt="cart">
-                  <span class="inline-block rounded-full bg-white text-violet-500 text-center w-6 h-6 mx-2 font-bold">{{4}}</span>
-                  <span>£{{13.98}}</span>
+                  <span class="inline-block rounded-full bg-white text-violet-500 text-center w-6 h-6 mx-2 font-bold">
+                    {{this.ProductsQuantity}}
+                  </span>
+                  <span>£{{this.ProductsTotalPrice}}</span>
                 </div>
               </LinkTo>
             {{else}}

@@ -1,39 +1,10 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
+import { service } from '@ember/service';
 
 export default class ProductComponent extends Component {
   @tracked quantity = 0;
-  get totalPrice() {
-    const { product } = this.args;
-    if (!this.quantity) {
-      return product.price.toFixed(2);
-    } else {
-      let totalPrice;
-      switch (product.code) {
-        case 'GR1':
-          totalPrice = (Math.ceil(this.quantity / 2) * product.price).toFixed(2);
-          break;
-        case 'SR1':
-          if (this.quantity >= 3) {
-            totalPrice = (this.quantity * 4.5).toFixed(2);
-          } else {
-            totalPrice = (this.quantity * product.price).toFixed(2);
-          }
-          break;
-        case 'CF1':
-          if (this.quantity >= 3) {
-            totalPrice = ((2 / 3) * this.quantity * product.price).toFixed(2);
-          } else {
-            totalPrice = (this.quantity * product.price).toFixed(2);
-          }
-          break;
-        default:
-          totalPrice = (this.quantity * product.price).toFixed(2);
-      }
-      return totalPrice;
-    }
-  }
+  @service('shopping-cart') cart;
 
   get discountDescription() {
     const { product } = this.args;
@@ -61,18 +32,5 @@ export default class ProductComponent extends Component {
       default:
         return '';
     }
-  }
-
-  get isconIsShown() {
-    return this.quantity < 2;
-  }
-
-  @action
-  addToCart() {
-    this.quantity++;
-  }
-  @action
-  deleteFromCart() {
-    this.quantity--;
   }
 }

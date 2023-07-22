@@ -6,7 +6,7 @@ export default function () {
       data: [
         {
           type: 'product',
-          id: 'GR1',
+          id: '1',
           attributes: {
             name: 'Green Tea',
             price: 3.11,
@@ -24,7 +24,7 @@ export default function () {
         },
         {
           type: 'product',
-          id: '1',
+          id: '3',
           attributes: {
             name: 'Coffee',
             price: 11.23,

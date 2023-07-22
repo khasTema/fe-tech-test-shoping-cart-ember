@@ -1,26 +1,17 @@
 {{page-title "Checkout"}}
 
-<div class="backit w-11/12 mx-auto mt-7 mb-5">
-    <LinkTo @route="products" class="flex justify-start items-center">
-        <img src="/icons/chevron-left.png" alt="back">
-        Continue shopping
-    </LinkTo>
-</div>
-
-<div class="w-11/12 mx-auto mt-7 mb-5">
-    <h1 class="text-4xl leading-10 font-medium mb-2">Shopping Cart</h1>
-    <p class="text-xl leading-7 font-normal">You have {{4}} items in your cart.</p>
-</div>
-
-<main>
-    <div class="products-list">
-        <div>
-            <img src={{"/images/cf1.png"}} alt={{'product name'}}>
-        </div>
-        <h2>Product title</h2>
-        <span>prod price</span>
-        <PromoBadge />
-        <AddBtn />
+<Container>
+    <div class="backit w-11/12 mx-auto mt-7 mb-5">
+        <LinkTo @route="products" class="flex justify-start items-center">
+            <img src="/icons/chevron-left.png" alt="back">
+            Continue shopping
+        </LinkTo>
     </div>
-    <div class="checkout-list"></div>
-</main>
+
+    <Jumbo>
+        <Heading>Shopping Cart</Heading>
+        <SubHeading>You have <span><ItemCount /></span>in your cart.</SubHeading>
+    </Jumbo>
+
+    <CheckoutMain />
+</Container>

@@ -6,38 +6,38 @@ export default class ProductComponent extends Component {
   @tracked quantity = 0;
   @service('shopping-cart') cart;
 
-  get totalPrice() {
-    const { product } = this.args;
-    if (!this.quantity) {
-      return product.price.toFixed(2);
-    } else {
-      let totalPrice;
-      switch (product.code) {
-        case 'GR1':
-          totalPrice = (Math.ceil(this.quantity / 2) * product.price).toFixed(
-            2
-          );
-          break;
-        case 'SR1':
-          if (this.quantity >= 3) {
-            totalPrice = (this.quantity * 4.5).toFixed(2);
-          } else {
-            totalPrice = (this.quantity * product.price).toFixed(2);
-          }
-          break;
-        case 'CF1':
-          if (this.quantity >= 3) {
-            totalPrice = ((2 / 3) * this.quantity * product.price).toFixed(2);
-          } else {
-            totalPrice = (this.quantity * product.price).toFixed(2);
-          }
-          break;
-        default:
-          totalPrice = (this.quantity * product.price).toFixed(2);
-      }
-      return parseFloat(totalPrice);
-    }
-  }
+  // get totalPrice() {
+  //   const { product } = this.args;
+  //   if (!this.quantity) {
+  //     return product.price.toFixed(2);
+  //   } else {
+  //     let totalPrice;
+  //     switch (product.code) {
+  //       case 'GR1':
+  //         totalPrice = (Math.ceil(this.quantity / 2) * product.price).toFixed(
+  //           2
+  //         );
+  //         break;
+  //       case 'SR1':
+  //         if (this.quantity >= 3) {
+  //           totalPrice = (this.quantity * 4.5).toFixed(2);
+  //         } else {
+  //           totalPrice = (this.quantity * product.price).toFixed(2);
+  //         }
+  //         break;
+  //       case 'CF1':
+  //         if (this.quantity >= 3) {
+  //           totalPrice = ((2 / 3) * this.quantity * product.price).toFixed(2);
+  //         } else {
+  //           totalPrice = (this.quantity * product.price).toFixed(2);
+  //         }
+  //         break;
+  //       default:
+  //         totalPrice = (this.quantity * product.price).toFixed(2);
+  //     }
+  //     return parseFloat(totalPrice);
+  //   }
+  // }
 
   get discountDescription() {
     const { product } = this.args;

@@ -6,6 +6,7 @@ import { tracked } from '@glimmer/tracking';
 export default class AddBtnComponent extends Component {
   @service('shopping-cart') cart;
   @tracked quantity = this.args.product.quantity || 0;
+  @tracked discountedTotalPrice = this.args.product.discountedTotalPrice;
 
   @action
   addToCart() {
@@ -19,7 +20,7 @@ export default class AddBtnComponent extends Component {
       code: product.code,
       promo: discountDescription,
       quantity: 1,
-      // discountedTotalPrice: this.totalPrice,
+      discountedTotalPrice: product.price,
     };
     this.cart.add(cartProduct);
     // console.log(cartProduct);

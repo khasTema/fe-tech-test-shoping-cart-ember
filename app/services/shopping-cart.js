@@ -5,18 +5,43 @@ import { tracked } from '@glimmer/tracking';
 export default class ShoppingCartService extends Service {
   @tracked cartItems = A([]);
 
+  // add(item) {
+  //   const existingItem = this.cartItems.findBy('id', item.id);
+  //   if (existingItem) {
+  //     const newItem = {
+  //       ...existingItem,
+  //       quantity: existingItem.quantity + 1,
+  //       discountedTotalPrice: this.totalPrice(item),
+  //     };
+  //     this.cartItems.removeObject(existingItem);
+  //     this.cartItems.pushObject(newItem);
+  //   } else {
+  //     this.cartItems.pushObject(item); // Push the new item into the cartItems array
+  //   }
+  //   console.log(this.cartItems);
+  // }
+
   add(item) {
     const existingItem = this.cartItems.findBy('id', item.id);
     if (existingItem) {
       const newItem = {
         ...existingItem,
         quantity: existingItem.quantity + 1,
+        discountedTotalPrice: this.totalPrice({
+          ...existingItem,
+          quantity: existingItem.quantity + 1,
+        }),
       };
       this.cartItems.removeObject(existingItem);
       this.cartItems.pushObject(newItem);
     } else {
-      this.cartItems.pushObject(item); // Push the new item into the cartItems array
+      const newItem = {
+        ...item,
+        discountedTotalPrice: this.totalPrice(item),
+      };
+      this.cartItems.pushObject(newItem); // Push the new item into the cartItems array
     }
+    console.log(this.cartItems);
   }
 
   remove(id) {
@@ -29,6 +54,10 @@ export default class ShoppingCartService extends Service {
         const newItem = {
           ...existingItem,
           quantity: existingItem.quantity - 1,
+          discountedTotalPrice: this.totalPrice({
+            ...existingItem,
+            quantity: existingItem.quantity - 1,
+          }),
         };
         this.cartItems.removeObject(existingItem);
         this.cartItems.pushObject(newItem);
@@ -51,5 +80,37 @@ export default class ShoppingCartService extends Service {
       (item) => (priceAmmount += item.discountedTotalPrice)
     );
     return priceAmmount;
+  }
+
+  totalPrice(item) {
+    // const { product } = this.args;
+    if (!item.quantity) {
+      // return parseFloat(item.price.toFixed(2));
+      return 'here it works';
+    } else {
+      let totalPrice;
+      switch (item.code) {
+        case 'GR1':
+          totalPrice = (Math.ceil(item.quantity / 2) * item.price).toFixed(2);
+          break;
+        case 'SR1':
+          if (item.quantity >= 3) {
+            totalPrice = (item.quantity * 4.5).toFixed(2);
+          } else {
+            totalPrice = (item.quantity * item.price).toFixed(2);
+          }
+          break;
+        case 'CF1':
+          if (item.quantity >= 3) {
+            totalPrice = ((2 / 3) * item.quantity * item.price).toFixed(2);
+          } else {
+            totalPrice = (item.quantity * item.price).toFixed(2);
+          }
+          break;
+        default:
+          totalPrice = (item.quantity * item.price).toFixed(2);
+      }
+      return parseFloat(totalPrice);
+    }
   }
 }

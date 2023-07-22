@@ -6,11 +6,11 @@
         <h2 class="text-xl leading-7 font-bold block text-gray-800 mb-2">{{@product.name}}</h2>
         <PromoBadge @discountDescription={{@product.promo}}/>
         <AddBtn
-            @quantity={{@product.quantity}}
-            @deleteFromCart={{this.deleteFromCart}}
+            @product={{@product}}
+            {{!-- @deleteFromCart={{this.deleteFromCart}}
             @addToCart={{this.addToCart}}
-            @isconIsShown={{this.isconIsShown}}
+            @isconIsShown={{this.isconIsShown}} --}}
         />
     </div>
-    <span class="ml-auto">£{{345}}</span>
+    <span class="ml-auto">£{{@product.price}}</span>
 </div>

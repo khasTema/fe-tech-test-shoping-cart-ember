@@ -1,4 +1,4 @@
-{{#if this.args.quantity}}
+{{#if this.quantity}}
     <div class="bg-violet-50 text-violet-500 font-bold rounded flex justify-between items-center">
         {{#if this.isTrashIconShown}}
             <button
@@ -19,7 +19,7 @@
                 <span>-</span>
             </button>
         {{/if}}
-        <span class="my-2 px-1">{{this.args.quantity}}</span>
+        <span class="my-2 px-1">{{this.quantity}}</span>
         <button
             class="hover:bg-violet-500 hover:text-white px-3 rounded"
             type="button"

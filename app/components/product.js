@@ -68,30 +68,30 @@ export default class ProductComponent extends Component {
     }
   }
 
-  get isconIsShown() {
-    return this.quantity < 2;
-  }
+  // get isconIsShown() {
+  //   return this.quantity < 2;
+  // }
 
-  @action
-  addToCart() {
-    this.quantity++;
-    const { product } = this.args;
-    let cartProduct = {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      code: product.code,
-      quantity: this.quantity,
-      discountedTotalPrice: this.totalPrice,
-      promo: this.discountDescription,
-      image: this.productImage,
-    };
-    this.cart.add(cartProduct);
-  }
-  @action
-  deleteFromCart() {
-    this.quantity--;
-    const { product } = this.args;
-    this.cart.remove(product.id); // sent to shopping-cart service
-  }
+  // @action
+  // addToCart() {
+  //   this.quantity++;
+  //   const { product } = this.args;
+  //   let cartProduct = {
+  //     id: product.id,
+  //     name: product.name,
+  //     price: product.price,
+  //     code: product.code,
+  //     quantity: this.quantity,
+  //     discountedTotalPrice: this.totalPrice,
+  //     promo: this.discountDescription,
+  //     image: this.productImage,
+  //   };
+  //   this.cart.add(cartProduct);
+  // }
+  // @action
+  // deleteFromCart() {
+  //   this.quantity--;
+  //   const { product } = this.args;
+  //   this.cart.remove(product.id); // sent to shopping-cart service
+  // }
 }

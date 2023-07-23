@@ -1,0 +1,13 @@
+<div class="name-cart-product w-full mb-4 border border-gray-100 rounded-lg p-3 flex justify-start items-start">
+    <div class="w-1/4 mr-3">
+        <img src={{@product.image}} alt={{@product.name}}>
+    </div>
+    <div class="h-full px-4 flex flex-col justify-between items-start">
+        <h2 class="text-xl leading-7 font-bold block text-gray-800 mb-2">{{@product.name}}</h2>
+        <PromoBadge @discountDescription={{@product.promo}}/>
+        <AddBtn
+            @product={{@product}}
+        />
+    </div>
+    <span class="ml-auto">£{{@product.price}}</span>
+</div>

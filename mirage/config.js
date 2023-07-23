@@ -8,8 +8,8 @@ export default function () {
           type: 'product',
           id: '1',
           attributes: {
-            name: 'Product 1',
-            price: 100,
+            name: 'Green Tea',
+            price: 3.11,
             code: 'GR1',
           },
         },
@@ -17,9 +17,18 @@ export default function () {
           type: 'product',
           id: '2',
           attributes: {
-            name: 'Product 2',
-            price: 200,
+            name: 'Strawberries',
+            price: 5.0,
             code: 'SR1',
+          },
+        },
+        {
+          type: 'product',
+          id: '3',
+          attributes: {
+            name: 'Coffee',
+            price: 11.23,
+            code: 'CF1',
           },
         },
       ],

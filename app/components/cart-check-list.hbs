@@ -1,0 +1,43 @@
+<div class="w-full mb-4 border border-gray-100 rounded-lg flex flex-col justify-start items-start overflow-hidden">
+    <div class="name-headind bg-gray-100 w-full p-6">
+        <h2 class="text-xl text-gray-800 leading-7 font-bold block mb-2">Summary</h2>
+    </div>
+    <div class="name-totals p-6 w-full flex flex-col items-end border border-gray-50">
+        <div class="subtotal w-8/12 flex justify-between items-center mb-3 relative">
+            <span class="name text-gray-800">Subtotal</span>
+            <span class="price text-gray-800">£{{this.subtotal}}</span>
+            <div class="absolute custom-arrow-list-btn-left cursor-pointer" {{on "click" this.handleClick}} title="Show discounted prices">
+                {{#if this.showList}}
+                    <img src="/icons/chevron-down.png" alt="arrow">
+                {{else}}
+                    <img src="/icons/chevron-right.png" alt="arrow">
+                {{/if}}
+            </div>
+        </div>
+        {{#if this.showList}}
+            <div class="list-of-items w-8/12 mb-4">
+                {{#each this.cart.cartItems as |item|}}
+                    <div class="w-full p-2 flex justify-between">
+                        <span>{{item.quantity}} x {{item.name}}</span>
+                        <span>£{{item.discountedTotalPrice}}</span>
+                    </div>
+                {{/each}}
+            </div>
+        {{/if}}
+        <div class="subtotal w-8/12 flex justify-between items-center mb-3">
+            <span class="name text-gray-800">Shipping Cost</span>
+            <span class="price text-gray-800">£{{this.shippingCost}}</span>
+        </div>
+        <div class="subtotal w-8/12 flex justify-between items-center mb-3">
+            <span class="name text-gray-800">Discount</span>
+            <span class="price text-gray-800">£{{this.reducedDiscountAmmount}}</span>
+        </div>
+    </div>
+    <div class="ammount w-full p-6">
+        <div class="total-summ w-full flex justify-between items-center mb-4">
+            <span class="name text-xl text-gray-800">Total Payable</span>
+            <span class="price text-xl text-gray-800 font-bold">£{{this.total}}</span>
+        </div>
+        <button class="bg-violet-500 rounded py-1 px-2 text-white font-bold ml-auto block hover:bg-violet-50 hover:text-violet-500 transition" type="button">Go To Checkout</button>
+    </div>
+</div>

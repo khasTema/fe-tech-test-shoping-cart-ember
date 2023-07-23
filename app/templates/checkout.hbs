@@ -1,0 +1,17 @@
+{{page-title "Checkout"}}
+
+<Container>
+    <div class="backit w-11/12 mx-auto mt-7 mb-5">
+        <LinkTo @route="products" class="flex justify-start items-center">
+            <img src="/icons/chevron-left.png" alt="back">
+            Continue shopping
+        </LinkTo>
+    </div>
+
+    <Jumbo>
+        <Heading>Shopping Cart</Heading>
+        <SubHeading>You have <span><ItemCount /></span>in your cart.</SubHeading>
+    </Jumbo>
+
+    <CheckoutMain />
+</Container>

@@ -1,13 +1,11 @@
 # Frontend Tech Test
-
-## Objectives
-- Evaluation of programming style
-- Evaluation of language knowledge
-- Evaluation of testing approach
+Done
+To proceed with the product page go to /products
+Click on the logo in the navbar
 
 ## Deadline
-- Assignment should be ready within 5 natural days of inbox reception
-- Assignment is completed when we receive the link to the repository
+- Started 20/07/23
+- Finished 23/07/23
 
 ## Task Description
 You are the lead FE programmer for a small web shop. You are required to make a simple page where the user can add products to a cart, and the total of the cart is updated in real time.
@@ -42,27 +40,8 @@ Our check-out can scan items in any order, and because the C*Os change their min
 
 ### Bonus point
 - Implement tests (integration or acceptance)
+- Implemented Acceptance, Integratiin And Unit Tests
 
-## Prerequisites
-
-You will need the following things properly installed on your computer.
-
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://cli.emberjs.com/release/)
-* [Google Chrome](https://google.com/chrome/)
-
-## Installation
-
-* `git clone <repository-url>` this repository
-* `cd fe-tech-test`
-* `npm install`
-
-With this, you will have an empty app with two routes already implemented `index` and `product`.
-[TailwindCSS](https://tailwindcss.com/) is installed so you can make use of it.
-A simple backend is available using Mirage, you can modifiy it and adapt it for your needs.
-There is no need to install anything else to make the app work, of course you can add any
-other library you want to use. 
 
 ## Running / Development
 
@@ -70,33 +49,8 @@ other library you want to use.
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
 ### Running Tests
 
 * `ember test`
 * `ember test --server`
 
-### Linting
-
-* `npm run lint`
-* `npm run lint:fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://cli.emberjs.com/release/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
